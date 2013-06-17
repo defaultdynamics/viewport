@@ -1,0 +1,1 @@
+module.exports = '<section class="buyer-category">\n	<a href="/buyer"> << Buyer</a>\n	<h1>Buyer Category Page<h1>\n\n	<div class="category-name"></div>\n</section>';

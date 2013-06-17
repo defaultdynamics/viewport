@@ -1,0 +1,1 @@
+module.exports = '<section class="map">\n    <a href="./">Home</a>\n    <h1>Map page<h1>\n</section>';

@@ -1,0 +1,8 @@
+{
+  "name": "dashboard",
+  "repo": "debianw/dashboard",
+  "description": "Test",
+  "version": "0.0.1",
+  "local": ["boot"],
+  "paths": ["client"]
+}

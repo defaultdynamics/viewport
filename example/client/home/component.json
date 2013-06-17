@@ -1,0 +1,14 @@
+{
+    "name": "home",
+    "description": "Home",
+    "dependencies": {
+    	"component/domify": "*"
+    },
+    "scripts": [
+        "index.js",
+        "template.js"
+    ],
+    "local": [
+    	"view"
+    ]
+}

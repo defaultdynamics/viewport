@@ -1,0 +1,14 @@
+{
+    "name": "map",
+    "description": "Map",
+    "dependencies": {
+    	"component/domify": "*"
+    },
+    "scripts": [
+        "index.js",
+        "template.js"
+    ],
+    "local": [
+    	"view"
+    ]
+}

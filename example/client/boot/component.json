@@ -1,0 +1,20 @@
+{
+    "name": "boot",
+    "description": "Main app boot component",
+    "dependencies": {
+        "visionmedia/page.js": "*",
+        "debianw/view": "*",
+        "debianw/viewport": "*"
+    },
+    "scripts": [
+        "index.js"
+    ],
+    "styles": [
+        "style.css"
+    ],
+    "local": [
+        "home",
+        "buyer",
+        "map"
+    ]
+}

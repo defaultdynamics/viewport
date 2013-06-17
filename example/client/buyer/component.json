@@ -1,0 +1,16 @@
+{
+    "name": "buyer",
+    "description": "Buyer",
+    "dependencies": {
+    	"component/domify": "*"
+    },
+    "scripts": [
+        "index.js",
+        "template.js",
+        "category.js",
+        "category.tpl.js"
+    ],
+    "local": [
+    	"view"
+    ]
+}

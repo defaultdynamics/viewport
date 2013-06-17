@@ -1,0 +1,1 @@
+module.exports = '<section class="home">\n\n	<h1>Home page</h1>\n\n	<ul>\n      <!--<li><a href="./">Home</a></li>-->\n      <li><a href="./buyer">Buyer</a></li>\n      <li><a href="./map">Map</a></li>\n    </ul>\n\n</section>';
