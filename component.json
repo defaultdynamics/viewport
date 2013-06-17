@@ -1,0 +1,16 @@
+{
+    "name": "viewport",
+    "description": "Viewport",
+    "version": "0.0.1",
+    "dependencies": {
+        "component/domify": "*",
+        "component/event": "*"
+    },
+    "scripts": [
+        "index.js",
+        "template.js"
+    ],
+    "styles": [
+        "style.css"
+    ]
+}
