@@ -2,13 +2,12 @@
     "name": "home",
     "description": "Home",
     "dependencies": {
-    	"component/domify": "*"
+        "component/domify": "*",
+        "debianw/view": "*",
+        "debianw/viewport": "*"
     },
     "scripts": [
         "index.js",
         "template.js"
-    ],
-    "local": [
-    	"view"
     ]
 }

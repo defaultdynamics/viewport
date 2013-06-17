@@ -2,15 +2,14 @@
     "name": "buyer",
     "description": "Buyer",
     "dependencies": {
-    	"component/domify": "*"
+        "component/domify": "*",
+        "debianw/view": "*",
+        "debianw/viewport": "*"
     },
     "scripts": [
         "index.js",
         "template.js",
         "category.js",
         "category.tpl.js"
-    ],
-    "local": [
-    	"view"
     ]
 }
