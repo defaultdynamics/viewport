@@ -33,7 +33,7 @@ function Viewport () {
  *
  */
 
-Viewport.prototype.goTo = function (page, ctx) {
+Viewport.prototype.goTo = function (view, ctx) {
     var length = stateHistory.length
       , state = ctx.state;
 
@@ -41,16 +41,16 @@ Viewport.prototype.goTo = function (page, ctx) {
 
     if (length === 0) {
         stateHistory.push(state.path);
-        this.goToFrom(page);
+        this.goToFrom(view);
 
         return;
     }
     if (state.path === stateHistory[length-2]) {
         stateHistory.pop();
-        this.goToFrom(page, 'page-left');
+        this.goToFrom(view, 'view-left');
     } else {
         stateHistory.push(state.path);
-        this.goToFrom(page, 'page-right');
+        this.goToFrom(view, 'view-right');
     }
 
     return this;
@@ -60,27 +60,27 @@ Viewport.prototype.goTo = function (page, ctx) {
  *
  */
 
-Viewport.prototype.goToFrom = function (page, from) {
-    var current = document.querySelector('.page-center')
+Viewport.prototype.goToFrom = function (view, from) {
+    var current = document.querySelector('.view-center')
       , currentEl
       , container = this.container
-      , pageEl = page.view.el
+      , viewEl = view.view.el
       , onTransitionEnd;
 
     // append to container
-    container.appendChild(pageEl);
+    container.appendChild(viewEl);
 
     if (!current || !from) {
-        pageEl.setAttribute("class", "page page-center");
-        //this.current(page);
+        viewEl.setAttribute("class", "view view-center");
+        //this.current(view);
 
         return;
     }
 
     currentEl = current;
 
-    // Position the page at the starting position of the animation
-    pageEl.setAttribute("class", "page " + from);
+    // Position the view at the starting position of the animation
+    viewEl.setAttribute("class", "view " + from);
 
     onTransitionEnd = function (e) {
         e.preventDefault();
@@ -97,6 +97,6 @@ Viewport.prototype.goToFrom = function (page, from) {
     // Force reflow. More information here: http://www.phpied.com/rendering-repaint-reflowrelayout-restyle/
     container.offsetWidth;
 
-    pageEl.setAttribute("class", "page transition page-center");
-    currentEl.setAttribute("class", "page transition " + (from === "page-left" ? "page-right" : "page-left"));
+    viewEl.setAttribute("class", "view transition view-center");
+    currentEl.setAttribute("class", "view transition " + (from === "view-left" ? "view-right" : "view-left"));
 };
