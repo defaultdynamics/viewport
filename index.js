@@ -5,6 +5,7 @@
 var template = require('./template')
   , domify = require('domify')
   , event = require('event')
+  , viewportToolbar = require('viewport-toolbar')
   , body
   , stateHistory;
 
@@ -24,9 +25,10 @@ module.exports = Viewport;
  */
 
 function Viewport () {
-    this.container = domify(template);
+    this.el = domify(template);
+    this.container = this.el.querySelector('#viewport');
 
-    body.appendChild(this.container);
+    body.appendChild(this.el);
 }
 
 /**
@@ -72,7 +74,6 @@ Viewport.prototype.goToFrom = function (view, from) {
 
     if (!current || !from) {
         viewEl.setAttribute("class", "view view-center");
-        //this.current(view);
 
         return;
     }
@@ -99,4 +100,14 @@ Viewport.prototype.goToFrom = function (view, from) {
 
     viewEl.setAttribute("class", "view transition view-center");
     currentEl.setAttribute("class", "view transition " + (from === "view-left" ? "view-right" : "view-left"));
+};
+
+/**
+ * Enables main toolbar.
+ */
+
+Viewport.prototype.enableToolbar = function (options) {
+    var toolbar = viewportToolbar(options);
+
+    this.el.appendChild(toolbar.el);
 };

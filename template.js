@@ -1,1 +1,1 @@
-module.exports = '<div id="viewport"></div>';
+module.exports = '<div id="viewport-wrapper">\n    <div id="viewport"></div>\n</div>';
