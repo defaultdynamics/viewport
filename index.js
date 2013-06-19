@@ -35,11 +35,9 @@ function Viewport () {
  *
  */
 
-Viewport.prototype.goTo = function (view, ctx) {
+Viewport.prototype.goTo = function (view, ctx, direction) {
     var length = stateHistory.length
       , state = ctx.state;
-
-    console.log('context: ', ctx);
 
     if (length === 0) {
         stateHistory.push(state.path);
@@ -47,7 +45,7 @@ Viewport.prototype.goTo = function (view, ctx) {
 
         return;
     }
-    if (state.path === stateHistory[length-2]) {
+    if (state.path === stateHistory[length-2] || direction === 'left') {
         stateHistory.pop();
         this.goToFrom(view, 'view-left');
     } else {
@@ -69,6 +67,8 @@ Viewport.prototype.goToFrom = function (view, from) {
       , viewEl = view.view.el
       , onTransitionEnd;
 
+    if (current && current.id === viewEl.id) return;
+
     // append to container
     container.appendChild(viewEl);
 
@@ -86,8 +86,6 @@ Viewport.prototype.goToFrom = function (view, from) {
     onTransitionEnd = function (e) {
         e.preventDefault();
         
-        console.log("on transition end: ", e.target);
-
         event.unbind(currentEl, 'webkitTransitionEnd', onTransitionEnd);
 
         currentEl.remove();
