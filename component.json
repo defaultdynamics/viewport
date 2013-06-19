@@ -5,7 +5,8 @@
     "dependencies": {
         "component/domify": "*",
         "component/event": "*",
-        "debianw/topcoat-dark": "*"
+        "debianw/topcoat-dark": "*",
+        "debianw/viewport-toolbar": "*"
     },
     "scripts": [
         "index.js",
@@ -13,8 +14,5 @@
     ],
     "styles": [
         "style.css"
-    ],
-    "local": [
-        "viewport-toolbar"
     ]
 }
