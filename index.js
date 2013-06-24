@@ -39,6 +39,8 @@ Viewport.prototype.goTo = function (view, ctx, direction) {
     var length = stateHistory.length
       , state = ctx.state;
 
+    console.log(view);
+
     if (length === 0) {
         stateHistory.push(state.path);
         this.goToFrom(view);
@@ -64,8 +66,10 @@ Viewport.prototype.goToFrom = function (view, from) {
     var current = document.querySelector('.view-center')
       , currentEl
       , container = this.container
-      , viewEl = view.view.el
+      , viewEl = view.el || view.view.el
       , onTransitionEnd;
+
+    if (!viewEl) throw new Error("View component needs to have a DOM element.");
 
     if (current && current.id === viewEl.id) return;
 
