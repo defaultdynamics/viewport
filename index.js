@@ -5,6 +5,7 @@
 var template = require('./template')
   , domify = require('domify')
   , event = require('event')
+  , Emitter = require('emitter')
   , viewportToolbar = require('viewport-toolbar')
   , body
   , stateHistory;
@@ -30,6 +31,12 @@ function Viewport () {
 
     body.appendChild(this.el);
 }
+
+/**
+ * Inherit Emitter
+ */
+ 
+Emitter(Viewport.prototype);
 
 /**
  *
@@ -87,13 +94,20 @@ Viewport.prototype.goToFrom = function (view, from) {
     // Position the view at the starting position of the animation
     viewEl.setAttribute("class", "view " + from);
 
+    // Transition Event Handler
+    //
     onTransitionEnd = function (e) {
         e.preventDefault();
-        
+        container.removeChild(currentEl);
+
+        this.emit('transition end');
         event.unbind(currentEl, 'webkitTransitionEnd', onTransitionEnd);
 
-        currentEl.remove();
-    };
+        if (view.view) {
+            view.view.emit('transition end');
+        }
+
+    }.bind(this);
 
     event.bind(currentEl, 'webkitTransitionEnd', onTransitionEnd);
 
@@ -111,5 +125,17 @@ Viewport.prototype.goToFrom = function (view, from) {
 Viewport.prototype.enableToolbar = function (options) {
     var toolbar = viewportToolbar(options);
 
+    this.toolbar(toolbar);
+
     this.el.appendChild(toolbar.el);
 };
+
+/**
+ * Set/Get toolbar
+ */
+
+ Viewport.prototype.toolbar = function (toolbar) {
+    if (!arguments.length) return this._toolbar;
+
+    this._toolbar = toolbar;
+ }
