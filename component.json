@@ -6,7 +6,8 @@
         "component/domify": "*",
         "component/event": "*",
         "debianw/topcoat-dark": "*",
-        "component/emitter": "*"
+        "component/emitter": "*",
+        "defaultdynamics/viewport-toolbar": "*"
     },
     "scripts": [
         "index.js",
@@ -14,8 +15,5 @@
     ],
     "styles": [
         "style.css"
-    ],
-    "local": [
-        "viewport-toolbar"
     ]
 }
